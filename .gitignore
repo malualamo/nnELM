@@ -1,1 +1,5 @@
 __pycache__/
+/tesis-env
+/Results
+.DS_Store
+*.csv

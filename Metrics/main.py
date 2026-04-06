@@ -62,7 +62,7 @@ def main(datasets, models,metrics,results_folder,filters_mss = {}):
             datasets_results[dataset_name] = dataset_results
             dataset_results_table = utils.create_table(dataset_results)
             utils.plot_table(dataset_results_table, title=dataset_name + ' dataset', save_path=dataset_results_dir, filename='Table.png')
-            utils.rose_plot(dataset_results,colors_dict,save_path=dataset_results_dir,filename='Rose.png')
+            #utils.rose_plot(dataset_results,colors_dict,save_path=dataset_results_dir,filename='Rose.png')
             utils.scores_plots(dataset_results,colors_dict,save_path=dataset_results_dir,filename='Scores.png')
             # Plot the labels and legends in a separate plot
             utils.plot_legends_and_labels(dataset_results,colors_dict,save_path=dataset_results_dir,filename='Labels_and_Legends.png')

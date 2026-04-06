@@ -113,7 +113,7 @@ class HumanScanpathPrediction:
             for subject in human_scanpaths_files:             
                 subject_name = subject[:-15]
                 if not self.subject_already_processed(subject, subject_name, model_output_path):
-                    model = importlib.import_module('Models.main')
+                    model = importlib.import_module('Model.main')
                     print('[Human Scanpath Prediction] Running ' + model_name + ' on ' + self.dataset_name + ' dataset using subject ' + subject_name + ' scanpaths')
                     model.main(self.dataset_name,model_name, subject_name,filters_mss=model_filters_mss,results_folder = self.general_results_dir,follow_human_scanpath = True)            
             average_results_per_image = self.get_model_average_per_image(model_output_path)
