@@ -13,7 +13,9 @@ import time
 from .visual_evidence_history import NoHistoryVisualEvidence, SimpleHistoryVisualEvidence, DegradedHistoryVisualEvidence
 from .target_absent import TargetAbsentStrategy
 
-class VisualSearcher: 
+class VisualSearcher:
+    _capture_fixation_maps = False  # Activated only by HumanMapExtractor to extract per-fixation maps
+
     def __init__(self, config, dataset_info, trials_properties, output_path, sigma,filters_mss):
         " Creates a new instance of the visual search model "
         """ Input:
@@ -188,6 +190,11 @@ class VisualSearcher:
     def save_metrics(self,image_name):
         return
 
+    def on_fixation_computed(self, fixation_number, current_fixation, visual_evidence, posterior, image_name):
+        """Hook called after each fixation's maps are computed. No-op by default.
+        Override in subclasses (e.g. HumanMapExtractor) by setting _capture_fixation_maps = True."""
+        pass
+
     def search(self, image_name, image, image_prior, memory_set_names,target_name,target_bbox, initial_fixation):
         " Given an image, a target, and a prior of that image, it looks for the object in the image, generating a scanpath "
         """ Input:
@@ -267,11 +274,14 @@ class VisualSearcher:
                                                                                         self.target_selector_degradation,self.target_selector_alpha)
 
             #Update working memory with the visual evidence of the selected object
-            visual_evidence_history_factory.update_values(visual_evidences[selected_posterior_index].at_fixation(current_fixation,fixation_number),fixation_number)
+            visual_evidence_at_fixation = visual_evidences[selected_posterior_index].at_fixation(current_fixation, fixation_number)
+            visual_evidence_history_factory.update_values(visual_evidence_at_fixation, fixation_number)
             likelihood_times_prior = posteriors_unnormalized[selected_posterior_index]
-            
+
             # Compute the posterior
             posterior = likelihood_times_prior / np.sum(likelihood_times_prior)
+            if self._capture_fixation_maps:  # Only active in HumanMapExtractor
+                self.on_fixation_computed(fixation_number, current_fixation, visual_evidence_at_fixation, posterior, image_name)
 
             # Compute next fixation
             next_fix_x,next_fix_y,info = self.search_model.next_fixation(posterior, image_name, fixation_number, self.output_path,path.join(self.elm_heatmap_directory,f'MSS {len(memory_set)}',f'{image_name[:-4]}'),current_fixation)            
@@ -397,7 +407,8 @@ class VisualSearcherSubject(VisualSearcher):
         return memset_weights
     
     def plot_heatmap(self):
-        return not self.follow_human_scanpath and self.save_probability_maps
+        # return not self.follow_human_scanpath and self.save_probability_maps
+        return self.save_probability_maps
 
     def get_current_fixation(self, fixation_number, fixations):        
         if self.follow_human_scanpath:
