@@ -11,6 +11,7 @@ Mapas dinámicos (extraídos en cada fijación humana, archivo .npz por sujeto/i
     visual_evidence  (n_fix, 24, 32)  evidencia W acumulada hasta cada fijación
     posterior        (n_fix, 24, 32)  creencia bayesiana posterior tras cada fijación
     entropy_map      (n_fix, 24, 32)  -posterior * log(posterior) — entropía por celda
+    expected_ig_map  (n_fix, 24, 32)  EIG esperado si la próxima fijación fuera cada celda (Eq. 6 del paper)
     fixations_y      (n_fix,)         fila en la grilla (coord Y, 0-23)
     fixations_x      (n_fix,)         columna en la grilla (coord X, 0-31)
     memory_set       list[str]        objetos del memory set del trial
@@ -118,6 +119,7 @@ def cargar_mapas_humanos(subject_id: str, image_name: str) -> dict:
             visual_evidence : (n_fix, 24, 32) float32
             posterior       : (n_fix, 24, 32) float32
             entropy_map     : (n_fix, 24, 32) float32  o  None (archivos viejos)
+            expected_ig_map : (n_fix, 24, 32) float32  o  None (archivos anteriores a esta versión)
             fixations_y     : (n_fix,) int16  — fila en la grilla
             fixations_x     : (n_fix,) int16  — columna en la grilla
             memory_set      : list[str]
@@ -126,7 +128,9 @@ def cargar_mapas_humanos(subject_id: str, image_name: str) -> dict:
 
     Nota:
         entropy_map.sum(axis=(1, 2)) da la entropía escalar por fijación.
-        Usar entropia_escalar(data) para manejar archivos de versiones anteriores.
+        expected_ig_map[i, y, x] es el EIG que obtendría el modelo si fijara en (y, x)
+        tras la i-ésima fijación. El máximo de cada mapa indica la sácada óptima del modelo.
+        Usar entropia_escalar(data) y eig_en_fijacion(data) para derivar features escalares.
     """
     npz_path = PATHS['human_maps'] / subject_id / (Path(image_name).stem + '.npz')
     raw = np.load(npz_path, allow_pickle=True)
@@ -137,6 +141,10 @@ def cargar_mapas_humanos(subject_id: str, image_name: str) -> dict:
     if 'entropy' in data and 'entropy_map' not in data:
         data['entropy_scalar'] = data.pop('entropy')
         data['entropy_map'] = None
+
+    # Compatibilidad: archivos anteriores a la versión con expected_ig_map
+    if 'expected_ig_map' not in data:
+        data['expected_ig_map'] = None
 
     data['memory_set']   = list(data['memory_set'])
     data['target_stim']  = str(data['target_stim'])
@@ -172,6 +180,35 @@ def kl_divergencia_consecutiva(data: dict) -> np.ndarray:
     post = data['posterior']   # (n_fix, 24, 32)
     eps = 1e-12
     return np.sum(post[1:] * np.log((post[1:] + eps) / (post[:-1] + eps)), axis=(1, 2))
+
+
+def eig_en_fijacion(data: dict) -> np.ndarray:
+    """
+    EIG asignado por el modelo a la celda donde el humano realmente fijó. Shape: (n_fix,).
+
+    Mide cuán "informativamente óptima" fue cada fijación humana según el modelo:
+    valores altos indican que el humano fijó donde el modelo hubiera predicho mayor
+    ganancia de información.
+
+    Requiere archivos nuevos (con expected_ig_map). Retorna array vacío si no disponible.
+    """
+    eig_map = data.get('expected_ig_map')
+    if eig_map is None:
+        return np.array([])
+    return valor_en_fijacion(eig_map, data)
+
+
+def eig_maximo(data: dict) -> np.ndarray:
+    """
+    Máximo del expected_ig_map en cada fijación — EIG de la sácada óptima. Shape: (n_fix,).
+
+    Refleja cuánta información podría haber ganado el modelo en el mejor movimiento posible.
+    Útil como referencia de la "oportunidad" de aprendizaje en cada momento del trial.
+    """
+    eig_map = data.get('expected_ig_map')
+    if eig_map is None:
+        return np.array([])
+    return eig_map.max(axis=(1, 2))
 
 
 def concentracion_posterior(data: dict) -> np.ndarray:
@@ -216,12 +253,19 @@ def tabla_features_fijacion(data: dict, image_name: str) -> 'pd.DataFrame':
         max_posterior   concentración (máximo del posterior)
         ve_at_fix       evidencia visual en la celda fijada
         post_at_fix     probabilidad posterior en la celda fijada
+        eig_at_fix      EIG del modelo en la celda fijada (NaN si archivo viejo)
+        eig_max         EIG máximo del mapa — sácada óptima del modelo (NaN si archivo viejo)
     """
     import pandas as pd
 
     n = data['posterior'].shape[0]
     kl  = kl_divergencia_consecutiva(data)
     kl_col = np.concatenate([[np.nan], kl])
+
+    eig_fix = eig_en_fijacion(data)
+    eig_fix_col = eig_fix if len(eig_fix) == n else np.full(n, np.nan)
+    eig_max_col = eig_maximo(data)
+    eig_max_col = eig_max_col if len(eig_max_col) == n else np.full(n, np.nan)
 
     return pd.DataFrame({
         'fixation':      np.arange(n),
@@ -232,6 +276,8 @@ def tabla_features_fijacion(data: dict, image_name: str) -> 'pd.DataFrame':
         'max_posterior': concentracion_posterior(data),
         've_at_fix':     valor_en_fijacion(data['visual_evidence'], data),
         'post_at_fix':   valor_en_fijacion(data['posterior'], data),
+        'eig_at_fix':    eig_fix_col,
+        'eig_max':       eig_max_col,
     })
 
 

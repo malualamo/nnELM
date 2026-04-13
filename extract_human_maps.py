@@ -81,22 +81,28 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
         # Mapa de entropía: contribución por celda — shape (grid_rows, grid_cols)
         # La entropía escalar es entropy_map.sum()
         entropy_map = -posterior * np.log(posterior + 1e-12)
+        
+        # EIG map — Eq. 6 del paper
+        posterior_repeated = np.tile(posterior[:, :, np.newaxis, np.newaxis], (1, 1, *self.grid.size()))
+        expected_ig_map = 0.5 * np.sum(posterior_repeated * self.visibility_map.fovea_map, axis=(0, 1))
 
         if image_name not in self._maps_buffer:
             self._maps_buffer[image_name] = {
                 'visual_evidence': [],
-                'posterior': [],
-                'entropy_map': [],
-                'fixations_y': [],
-                'fixations_x': [],
+                'posterior':       [],
+                'entropy_map':     [],
+                'expected_ig_map': [],   # ← nuevo
+                'fixations_y':     [],
+                'fixations_x':     [],
             }
 
         buf = self._maps_buffer[image_name]
         buf['visual_evidence'].append(visual_evidence.copy())
         buf['posterior'].append(posterior.copy())
         buf['entropy_map'].append(entropy_map.copy())
-        buf['fixations_y'].append(int(current_fixation[0]))  # row
-        buf['fixations_x'].append(int(current_fixation[1]))  # col
+        buf['expected_ig_map'].append(expected_ig_map.copy())   # ← nuevo
+        buf['fixations_y'].append(int(current_fixation[0]))
+        buf['fixations_x'].append(int(current_fixation[1]))
 
     def save_scanpaths(self, scanpaths):
         """Guarda los mapas acumulados como archivos .npz, uno por imagen."""
@@ -108,17 +114,17 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
 
             np.savez_compressed(
                 out_file,
-                # Mapas espaciales: shape (n_fix, grid_rows, grid_cols)
                 visual_evidence=np.array(buf['visual_evidence'], dtype=np.float32),
-                posterior=np.array(buf['posterior'], dtype=np.float32),
-                entropy_map=np.array(buf['entropy_map'], dtype=np.float32),
-                fixations_y=np.array(buf['fixations_y'], dtype=np.int16),
-                fixations_x=np.array(buf['fixations_x'], dtype=np.int16),
-                # Metadata del trial
+                posterior=np.array(buf['posterior'],             dtype=np.float32),
+                entropy_map=np.array(buf['entropy_map'],         dtype=np.float32),
+                expected_ig_map=np.array(buf['expected_ig_map'], dtype=np.float32),  # ← nuevo
+                fixations_y=np.array(buf['fixations_y'],         dtype=np.int16),
+                fixations_x=np.array(buf['fixations_x'],         dtype=np.int16),
                 memory_set=np.array(human_sp.get('memory_set', []), dtype=object),
                 target_stim=str(human_sp.get('target_stim', '')),
                 target_found=bool(human_sp.get('target_found', False)),
             )
+
             print(f'  Guardado: {out_file}  ({len(buf["entropy_map"])} fijaciones)')
 
         self._maps_buffer = {}

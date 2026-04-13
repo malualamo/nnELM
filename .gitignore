@@ -5,3 +5,5 @@ __pycache__/
 *.csv
 /Results_Tesis
 /Human_Maps
+/backup
+prompt.txt
