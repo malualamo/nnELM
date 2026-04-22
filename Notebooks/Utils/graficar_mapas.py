@@ -1,9 +1,12 @@
 import os
 import random
+import io as _io
+import tempfile
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 from PIL import Image
 from skimage import io
-import matplotlib.patches as patches
+import numpy as np
 import json
 import glob
 import random
@@ -297,3 +300,203 @@ def comparar_scanpaths_modelo_vs_humanos(image_name, model_scanpaths,
 
     plt.tight_layout()
     plt.show()
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GIF de Scanpath Humano
+# ─────────────────────────────────────────────────────────────────────────────
+
+def gifear_scanpath(imagen, sujeto,
+                    path_images='../Datasets/HSEM/images/',
+                    path_humanos='../Datasets/HSEM/human_scanpaths/',
+                    path_stimuli='../Datasets/HSEM/stimuli/',
+                    output_path=None,
+                    fps=1.5,
+                    figsize=(10, 7),
+                    xs_pixels=None,
+                    ys_pixels=None):
+    """
+    Genera un GIF del scanpath de un sujeto buscando el target en una imagen.
+
+    Params:
+        imagen       : nombre de archivo (e.g. 'cmp_sky_001_kite_001.jpg')
+        sujeto       : ID del sujeto    (e.g. 'et_244389')
+        output_path  : ruta de salida del .gif. Si None, usa /tmp/.
+        fps          : velocidad del GIF (frames por segundo)
+        figsize      : tamaño de la figura matplotlib
+        xs_pixels    : coordenadas X en píxeles de la imagen (opcional).
+                       Si se proveen, se usan en lugar de las del JSON.
+                       Deben estar en el espacio de la imagen cargada (e.g. 0–1023).
+        ys_pixels    : coordenadas Y en píxeles de la imagen (opcional).
+
+    Returns:
+        Ruta absoluta del GIF generado, o None si hubo error.
+    """
+    # 1. Cargar scanpath del sujeto (necesario para metadata y bbox)
+    json_path = os.path.join(path_humanos, f'{sujeto}_scanpaths.json')
+    if not os.path.exists(json_path):
+        print(f'Error: no se encontró {json_path}')
+        return None
+
+    with open(json_path) as f:
+        data = json.load(f)
+
+    key = imagen.strip()
+    if key not in data:
+        print(f'Error: "{imagen}" no encontrado en {sujeto}_scanpaths.json')
+        return None
+
+    info = data[key]
+
+    # 2. Cargar imagen base
+    img_path = os.path.join(path_images, imagen)
+    if not os.path.exists(img_path):
+        print(f'Error: imagen no encontrada en {img_path}')
+        return None
+    img_pil = Image.open(img_path).convert('RGB')
+
+    # Si se proveen coords en espacio del modelo (768×1024), usar esa imagen
+    if xs_pixels is not None and ys_pixels is not None:
+        img_pil = img_pil.resize((1024, 768), Image.LANCZOS)
+
+    img = np.array(img_pil)
+    h_img, w_img = img.shape[:2]
+
+    # 3. Posiciones de fijaciones
+    # scale_x/y siempre necesarios para el bbox (está en espacio JSON)
+    scale_x = w_img / info.get('image_width',  w_img)
+    scale_y = h_img / info.get('image_height', h_img)
+
+    if xs_pixels is not None and ys_pixels is not None:
+        # Usar posiciones pre-computadas (e.g. centros de celda del NPZ)
+        # → mismo origen que los mapas de saliencia/validación (sin escala adicional)
+        xs = list(xs_pixels)
+        ys = list(ys_pixels)
+        n  = len(xs)
+    else:
+        # Fallback: escalar coords del JSON al espacio de la imagen
+        xs_raw = info['X']
+        ys_raw = info['Y']
+        xs = [x * scale_x for x in xs_raw]
+        ys = [y * scale_y for y in ys_raw]
+        n  = len(xs)
+
+    # 4. Cargar target thumbnail (para inset)
+    target_stim  = info.get('target_stim', '')
+    target_thumb = None
+    if target_stim:
+        t_path = os.path.join(path_stimuli, target_stim)
+        if os.path.exists(t_path):
+            target_thumb = Image.open(t_path).convert('RGB')
+            target_thumb.thumbnail((90, 90))
+
+    # 5. Bbox del target (en espacio JSON → escalar a espacio de imagen)
+    bbox = info.get('target_bbox', None)  # [y_min, x_min, y_max, x_max]
+
+    # 6. Renderizar un frame por cada fijación acumulada
+    frames       = []
+    duration_ms  = int(1000 / fps)
+
+    for t in range(1, n + 1):
+        fig, ax = plt.subplots(figsize=figsize)
+        ax.imshow(img)
+
+        # Bounding box del target
+        if bbox is not None:
+            y_min, x_min, y_max, x_max = bbox
+            rect = patches.Rectangle(
+                (x_min * scale_x, y_min * scale_y),
+                (x_max - x_min) * scale_x, (y_max - y_min) * scale_y,
+                linewidth=2.5, edgecolor='red', facecolor='none',
+                linestyle='--', zorder=4)
+            ax.add_patch(rect)
+            ax.text(x_min * scale_x, y_min * scale_y - 6, 'TARGET',
+                    color='red', fontsize=9, fontweight='bold', zorder=5)
+
+        # Sacadas (flechas entre fijaciones ya vistas)
+        for i in range(1, t):
+            ax.annotate('', xy=(xs[i], ys[i]), xytext=(xs[i-1], ys[i-1]),
+                        arrowprops=dict(arrowstyle='->', color='yellow',
+                                        lw=2.0, alpha=0.85))
+
+        # Círculos de fijación
+        for i in range(t):
+            if i == 0:
+                color = 'lime'
+            elif i == t - 1:
+                color = 'red' if (t == n and info.get('target_found')) else 'deepskyblue'
+            else:
+                color = 'deepskyblue'
+            ax.add_patch(plt.Circle((xs[i], ys[i]), radius=16,
+                                    color=color, alpha=0.85, zorder=5))
+            ax.text(xs[i], ys[i], str(i), color='white', fontsize=8,
+                    ha='center', va='center', fontweight='bold', zorder=6)
+
+        # Título con estado
+        found     = info.get('target_found', False)
+        tgt_name  = os.path.splitext(target_stim)[0] if target_stim else '?'
+        estado    = '✓ Encontrado' if (found and t == n) else f'Fijación {t}/{n}'
+        ax.set_title(f'{sujeto}  |  target: {tgt_name}  |  {estado}', fontsize=10)
+        ax.axis('off')
+
+        # Inset con imagen del target (esquina sup. derecha)
+        if target_thumb is not None:
+            inset = fig.add_axes([0.83, 0.80, 0.14, 0.14])
+            inset.imshow(target_thumb)
+            inset.set_title('Target', fontsize=7, pad=2)
+            inset.axis('off')
+
+        plt.tight_layout()
+
+        # Capturar frame como PIL Image
+        buf = _io.BytesIO()
+        fig.savefig(buf, format='png', bbox_inches='tight', dpi=90)
+        buf.seek(0)
+        frame = Image.open(buf).copy()
+        frames.append(frame)
+        buf.close()
+        plt.close(fig)
+
+    if not frames:
+        return None
+
+    # 6. Guardar GIF
+    if output_path is None:
+        stem = os.path.splitext(imagen)[0]
+        output_path = os.path.join(tempfile.gettempdir(),
+                                   f'{stem}_{sujeto}.gif')
+
+    frames[0].save(
+        output_path,
+        save_all=True,
+        append_images=frames[1:],
+        duration=duration_ms,
+        loop=0,
+        optimize=False
+    )
+    return output_path
+
+
+def mostrar_gif_scanpath(imagen, sujeto, xs_pixels=None, ys_pixels=None, **kwargs):
+    """
+    Genera y muestra inline (Jupyter) el GIF del scanpath.
+    Acepta los mismos kwargs que gifear_scanpath().
+
+    Params adicionales:
+        xs_pixels : coordenadas X pre-computadas (e.g. de fijaciones_en_pixeles).
+                    Si se proveen, el GIF mostrará las mismas posiciones que los
+                    mapas de validación (centros de celda del NPZ).
+        ys_pixels : coordenadas Y pre-computadas.
+    """
+    try:
+        from IPython.display import Image as IPImage, display as ipy_display
+    except ImportError:
+        print('IPython no disponible; usa gifear_scanpath() para guardar el archivo.')
+        return
+
+    path = gifear_scanpath(imagen, sujeto,
+                           xs_pixels=xs_pixels, ys_pixels=ys_pixels,
+                           **kwargs)
+    if path:
+        print(f'GIF guardado en: {path}')
+        ipy_display(IPImage(filename=path))

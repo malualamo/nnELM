@@ -83,7 +83,7 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
         entropy_map = -posterior * np.log(posterior + 1e-12)
         
         # EIG map — Eq. 6 del paper
-        posterior_repeated = np.tile(posterior[:, :, np.newaxis, np.newaxis], (1, 1, *self.grid.size()))
+        posterior_repeated = np.tile(posterior[:, :, np.newaxis, np.newaxis], (1, 1, *self.grid.size())) # Igual que en código Gonza
         expected_ig_map = 0.5 * np.sum(posterior_repeated * self.visibility_map.fovea_map, axis=(0, 1))
 
         if image_name not in self._maps_buffer:
@@ -91,7 +91,7 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
                 'visual_evidence': [],
                 'posterior':       [],
                 'entropy_map':     [],
-                'expected_ig_map': [],   # ← nuevo
+                'expected_ig_map': [],   
                 'fixations_y':     [],
                 'fixations_x':     [],
             }
@@ -100,7 +100,7 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
         buf['visual_evidence'].append(visual_evidence.copy())
         buf['posterior'].append(posterior.copy())
         buf['entropy_map'].append(entropy_map.copy())
-        buf['expected_ig_map'].append(expected_ig_map.copy())   # ← nuevo
+        buf['expected_ig_map'].append(expected_ig_map.copy())   
         buf['fixations_y'].append(int(current_fixation[0]))
         buf['fixations_x'].append(int(current_fixation[1]))
 
@@ -117,7 +117,7 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
                 visual_evidence=np.array(buf['visual_evidence'], dtype=np.float32),
                 posterior=np.array(buf['posterior'],             dtype=np.float32),
                 entropy_map=np.array(buf['entropy_map'],         dtype=np.float32),
-                expected_ig_map=np.array(buf['expected_ig_map'], dtype=np.float32),  # ← nuevo
+                expected_ig_map=np.array(buf['expected_ig_map'], dtype=np.float32), 
                 fixations_y=np.array(buf['fixations_y'],         dtype=np.int16),
                 fixations_x=np.array(buf['fixations_x'],         dtype=np.int16),
                 memory_set=np.array(human_sp.get('memory_set', []), dtype=object),

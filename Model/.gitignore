@@ -31,3 +31,5 @@ data/target_similarity_maps
 
 # Saliency maps
 data/saliency
+
+Notebooks/Features/
