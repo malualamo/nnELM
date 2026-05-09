@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_seabottom_001_bottle_001.jpg",
+  "sujeto": "S107",
+  "target_stim": "bottle1337.png",
+  "target_found": true,
+  "memory_set": [
+    "bottle1337.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 13,
+      "fix_x": 16,
+      "saliencia_media": 0.04289215803146362,
+      "saliencia_mediana": 0.04313725605607033,
+      "saliencia_pixel": 0.04313725605607033,
+      "similitud_media": 0.0006778492825105786,
+      "similitud_mediana": 0.0,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -4.037951469421387,
+      "competencia_fp_var": 4.367783709480751,
+      "competencia_fp_media": -0.23693986348448937,
+      "competencia_fp_max": 0.1773444810067616,
+      "posterior": 7.4937606768799014e-06,
+      "entropia_prior_saliencia": 5.4916887283325195,
+      "entropia_prior_modelo": 5.877502918243408,
+      "entropia_posterior": 5.877502918243408,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.3266236186027527,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 11,
+      "modelo_fix_x": 19,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.3266236186027527,
+      "competencia_ratio_segundo_mayor": 0.3135031461715698,
+      "competencia_ratio": 0.9598299948812328,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

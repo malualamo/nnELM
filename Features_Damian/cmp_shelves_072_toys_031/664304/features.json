@@ -1,0 +1,46 @@
+{
+  "imagen": "cmp_shelves_072_toys_031.jpg",
+  "sujeto": "664304",
+  "target_stim": "bus441.png",
+  "target_found": true,
+  "memory_set": [
+    "airplane1208.png",
+    "airplane1221.png",
+    "bus437.png",
+    "bus441.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 7,
+      "fix_x": 8,
+      "saliencia_media": 0.10882353782653809,
+      "saliencia_mediana": 0.09803921729326248,
+      "saliencia_pixel": 0.0,
+      "similitud_media": 0.004373468458652496,
+      "similitud_mediana": 0.003921568859368563,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -3.626275062561035,
+      "competencia_fp_var": 4.1473025471465315,
+      "competencia_fp_media": -0.20106910215133614,
+      "competencia_fp_max": 2.6210870228496272,
+      "posterior": 0.0001428216346539557,
+      "entropia_prior_saliencia": 5.440489768981934,
+      "entropia_prior_modelo": 5.648015975952148,
+      "entropia_posterior": 5.648015975952148,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.5357105135917664,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 10,
+      "modelo_fix_x": 8,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.5357105135917664,
+      "competencia_ratio_segundo_mayor": 0.5274115204811096,
+      "competencia_ratio": 0.9845084371127707,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

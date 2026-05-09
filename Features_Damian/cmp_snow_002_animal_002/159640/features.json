@@ -1,0 +1,46 @@
+{
+  "imagen": "cmp_snow_002_animal_002.jpg",
+  "sujeto": "159640",
+  "target_stim": "horse986.png",
+  "target_found": true,
+  "memory_set": [
+    "cow451.png",
+    "dog73.png",
+    "cow496.png",
+    "horse986.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 12,
+      "fix_x": 29,
+      "saliencia_media": 0.07647442072629929,
+      "saliencia_mediana": 0.07058823853731155,
+      "saliencia_pixel": 0.007843137718737125,
+      "similitud_media": 0.4616115093231201,
+      "similitud_mediana": 0.49215686321258545,
+      "similitud_pixel": 0.003921568859368563,
+      "evidencia_visual": 0.6057840585708618,
+      "competencia_fp_var": 2.3682986114803195,
+      "competencia_fp_media": 0.00895112935048475,
+      "competencia_fp_max": 24.255996103798438,
+      "posterior": 0.03430071100592613,
+      "entropia_prior_saliencia": 4.377309799194336,
+      "entropia_prior_modelo": 2.9677271842956543,
+      "entropia_posterior": 2.9677271842956543,
+      "ganancia_informacion": null,
+      "eig_optimo": 2.5110833644866943,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 12,
+      "modelo_fix_x": 29,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 2.5110833644866943,
+      "competencia_ratio_segundo_mayor": 2.3986306190490723,
+      "competencia_ratio": 0.9552174384060685,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

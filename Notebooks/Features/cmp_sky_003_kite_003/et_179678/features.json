@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_sky_003_kite_003.jpg",
+  "sujeto": "et_179678",
+  "target_stim": "kite217.png",
+  "target_found": true,
+  "memory_set": [
+    "kite217.png",
+    "kite665.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 13,
+      "fix_x": 15,
+      "saliencia_media": 0.023039214313030243,
+      "saliencia_mediana": 0.019607843831181526,
+      "saliencia_pixel": 0.0235294122248888,
+      "similitud_media": 0.006299785804003477,
+      "similitud_mediana": 0.007843137718737125,
+      "similitud_pixel": 0.003921568859368563,
+      "evidencia_visual": -3.907008409500122,
+      "competencia_fp_var": 4.983949777814726,
+      "competencia_fp_media": -0.11407531515387564,
+      "competencia_fp_max": 22.861278950474617,
+      "posterior": 1.7883228792925365e-05,
+      "entropia_prior_saliencia": 4.738813877105713,
+      "entropia_prior_modelo": 4.13815975189209,
+      "entropia_posterior": 4.13815975189209,
+      "ganancia_informacion": null,
+      "eig_optimo": 1.6701503992080688,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 16,
+      "modelo_fix_x": 15,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 1.6701503992080688,
+      "competencia_ratio_segundo_mayor": 1.4362448453903198,
+      "competencia_ratio": 0.8599494069943285,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

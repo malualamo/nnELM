@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_building_003_person_001.jpg",
+  "sujeto": "et_389622",
+  "target_stim": "stm_building_003_person_001_013.png",
+  "target_found": true,
+  "memory_set": [
+    "stm_building_003_person_001_020.png",
+    "stm_building_003_person_001_013.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 9,
+      "fix_x": 19,
+      "saliencia_media": 0.025735294446349144,
+      "saliencia_mediana": 0.027450980618596077,
+      "saliencia_pixel": 0.0235294122248888,
+      "similitud_media": 0.043275125324726105,
+      "similitud_mediana": 0.0470588244497776,
+      "similitud_pixel": 0.03529411926865578,
+      "evidencia_visual": -2.2885828018188477,
+      "competencia_fp_var": 4.6375501863938355,
+      "competencia_fp_media": -0.24358399980709836,
+      "competencia_fp_max": 2.020147754658186,
+      "posterior": 5.532166142074857e-06,
+      "entropia_prior_saliencia": 5.618040561676025,
+      "entropia_prior_modelo": 5.899378299713135,
+      "entropia_posterior": 5.899378776550293,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.42459774017333984,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 12,
+      "modelo_fix_x": 11,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.42459774017333984,
+      "competencia_ratio_segundo_mayor": 0.41212767362594604,
+      "competencia_ratio": 0.9706308692497917,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

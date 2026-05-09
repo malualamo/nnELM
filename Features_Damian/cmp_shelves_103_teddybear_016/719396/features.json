@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_shelves_103_teddybear_016.jpg",
+  "sujeto": "719396",
+  "target_stim": "teddy bear1654.png",
+  "target_found": true,
+  "memory_set": [
+    "teddy bear1654.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 10,
+      "fix_x": 8,
+      "saliencia_media": 0.28085553646087646,
+      "saliencia_mediana": 0.2549019753932953,
+      "saliencia_pixel": 0.0,
+      "similitud_media": 0.4563993513584137,
+      "similitud_mediana": 0.4470588266849518,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -1.5829036235809326,
+      "competencia_fp_var": 2.781391222787819,
+      "competencia_fp_media": -0.16463735042320307,
+      "competencia_fp_max": 3.906482599712689,
+      "posterior": 0.0004607860464602709,
+      "entropia_prior_saliencia": 5.637707233428955,
+      "entropia_prior_modelo": 5.760684013366699,
+      "entropia_posterior": 5.760684013366699,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.5664674639701843,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 10,
+      "modelo_fix_x": 11,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.5664674639701843,
+      "competencia_ratio_segundo_mayor": 0.503247857093811,
+      "competencia_ratio": 0.8883967555112736,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

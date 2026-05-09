@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_building_050_bird_006.jpg",
+  "sujeto": "et_712871",
+  "target_stim": "bird1149.png",
+  "target_found": true,
+  "memory_set": [
+    "bird1506.png",
+    "bird1149.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 12,
+      "fix_x": 21,
+      "saliencia_media": 0.12400047481060028,
+      "saliencia_mediana": 0.10980392247438431,
+      "saliencia_pixel": 0.11764705926179886,
+      "similitud_media": 0.00855928286910057,
+      "similitud_mediana": 0.007843137718737125,
+      "similitud_pixel": 0.003921568859368563,
+      "evidencia_visual": -2.93802547454834,
+      "competencia_fp_var": 4.3980427533167985,
+      "competencia_fp_media": -0.19876065790849018,
+      "competencia_fp_max": 7.3823253248340155,
+      "posterior": 8.497131784679368e-05,
+      "entropia_prior_saliencia": 5.390377521514893,
+      "entropia_prior_modelo": 5.779183864593506,
+      "entropia_posterior": 5.779183864593506,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.6146279573440552,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 13,
+      "modelo_fix_x": 19,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.6146279573440552,
+      "competencia_ratio_segundo_mayor": 0.5953944325447083,
+      "competencia_ratio": 0.9687070453442124,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

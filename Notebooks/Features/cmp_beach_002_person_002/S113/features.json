@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_beach_002_person_002.jpg",
+  "sujeto": "S113",
+  "target_stim": "person17425.png",
+  "target_found": true,
+  "memory_set": [
+    "person17425.png",
+    "person16329.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 10,
+      "fix_x": 14,
+      "saliencia_media": 0.005637255497276783,
+      "saliencia_mediana": 0.003921568859368563,
+      "saliencia_pixel": 0.007843137718737125,
+      "similitud_media": 0.0,
+      "similitud_mediana": 0.0,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -4.62810754776001,
+      "competencia_fp_var": 4.370459075832177,
+      "competencia_fp_media": -0.21843377657816562,
+      "competencia_fp_max": 0.6683806553168739,
+      "posterior": 2.6368286398792407e-06,
+      "entropia_prior_saliencia": 4.724342346191406,
+      "entropia_prior_modelo": 5.224967002868652,
+      "entropia_posterior": 5.224967002868652,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.4497542977333069,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 11,
+      "modelo_fix_x": 19,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.4497542977333069,
+      "competencia_ratio_segundo_mayor": 0.4340289235115051,
+      "competencia_ratio": 0.965035633231177,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

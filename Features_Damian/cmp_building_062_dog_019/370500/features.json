@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_building_062_dog_019.jpg",
+  "sujeto": "370500",
+  "target_stim": "dog337.png",
+  "target_found": true,
+  "memory_set": [
+    "dog208.png",
+    "dog337.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 8,
+      "fix_x": 7,
+      "saliencia_media": 0.010294117964804173,
+      "saliencia_mediana": 0.0117647061124444,
+      "saliencia_pixel": 0.0,
+      "similitud_media": 0.0,
+      "similitud_mediana": 0.0,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -4.116853713989258,
+      "competencia_fp_var": 5.5543195260977045,
+      "competencia_fp_media": -0.17999522248718483,
+      "competencia_fp_max": 17.69374629071499,
+      "posterior": 2.5847632514341967e-06,
+      "entropia_prior_saliencia": 5.338242530822754,
+      "entropia_prior_modelo": 4.995516300201416,
+      "entropia_posterior": 4.995515823364258,
+      "ganancia_informacion": null,
+      "eig_optimo": 1.1127398014068604,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 6,
+      "modelo_fix_x": 8,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 1.1127398014068604,
+      "competencia_ratio_segundo_mayor": 0.9571287035942078,
+      "competencia_ratio": 0.8601549997439562,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "imagen": "cmp_shelves_042_toys_001.jpg",
+  "sujeto": "et_248301",
+  "target_stim": "bus30.png",
+  "target_found": true,
+  "memory_set": [
+    "airplane45.png",
+    "car88.png",
+    "motorcycle242.png",
+    "bus30.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 11,
+      "fix_x": 15,
+      "saliencia_media": 0.04950980469584465,
+      "saliencia_mediana": 0.04901960864663124,
+      "saliencia_pixel": 0.0470588244497776,
+      "similitud_media": 0.02949601784348488,
+      "similitud_mediana": 0.0313725508749485,
+      "similitud_pixel": 0.03529411926865578,
+      "evidencia_visual": -3.5757391452789307,
+      "competencia_fp_var": 5.315472297418702,
+      "competencia_fp_media": -0.26223796107239544,
+      "competencia_fp_max": 0.10992242165043827,
+      "posterior": 2.7729300200007856e-05,
+      "entropia_prior_saliencia": 5.566565036773682,
+      "entropia_prior_modelo": 5.914996147155762,
+      "entropia_posterior": 5.914996147155762,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.2992993891239166,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 17,
+      "modelo_fix_x": 14,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.2992993891239166,
+      "competencia_ratio_segundo_mayor": 0.2938433289527893,
+      "competencia_ratio": 0.9817705602838087,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

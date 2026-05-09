@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_building_032_cat_011.jpg",
+  "sujeto": "S106",
+  "target_stim": "cat219.png",
+  "target_found": true,
+  "memory_set": [
+    "cat219.png",
+    "cat379.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 13,
+      "fix_x": 17,
+      "saliencia_media": 0.42110908031463623,
+      "saliencia_mediana": 0.3960784375667572,
+      "saliencia_pixel": 0.41960784792900085,
+      "similitud_media": 0.034030333161354065,
+      "similitud_mediana": 0.027450980618596077,
+      "similitud_pixel": 0.0313725508749485,
+      "evidencia_visual": -3.233548164367676,
+      "competencia_fp_var": 3.7267477769716937,
+      "competencia_fp_media": -0.20610397048217455,
+      "competencia_fp_max": 4.461404976066191,
+      "posterior": 0.0018339086091145873,
+      "entropia_prior_saliencia": 5.697188377380371,
+      "entropia_prior_modelo": 6.042997360229492,
+      "entropia_posterior": 6.042996883392334,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.3618168532848358,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 17,
+      "modelo_fix_x": 16,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.3618168532848358,
+      "competencia_ratio_segundo_mayor": 0.3529503643512726,
+      "competencia_ratio": 0.9754945385957928,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

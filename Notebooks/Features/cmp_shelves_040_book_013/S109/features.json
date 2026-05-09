@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_shelves_040_book_013.jpg",
+  "sujeto": "S109",
+  "target_stim": "book879.png",
+  "target_found": true,
+  "memory_set": [
+    "book879.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 13,
+      "fix_x": 14,
+      "saliencia_media": 0.06323529779911041,
+      "saliencia_mediana": 0.062745101749897,
+      "saliencia_pixel": 0.054901961237192154,
+      "similitud_media": 0.002653952222317457,
+      "similitud_mediana": 0.003921568859368563,
+      "similitud_pixel": 0.003921568859368563,
+      "evidencia_visual": -0.9779753684997559,
+      "competencia_fp_var": 2.9094998478379828,
+      "competencia_fp_media": -0.20761604328147287,
+      "competencia_fp_max": 0.0006020238734782532,
+      "posterior": 1.3845536159351468e-05,
+      "entropia_prior_saliencia": 5.292949676513672,
+      "entropia_prior_modelo": 5.73402214050293,
+      "entropia_posterior": 5.73402214050293,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.5924091339111328,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 9,
+      "modelo_fix_x": 17,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.5924091339111328,
+      "competencia_ratio_segundo_mayor": 0.567951500415802,
+      "competencia_ratio": 0.9587149621852392,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

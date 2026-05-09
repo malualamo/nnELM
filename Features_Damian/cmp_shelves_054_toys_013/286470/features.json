@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_shelves_054_toys_013.jpg",
+  "sujeto": "286470",
+  "target_stim": "truck319.png",
+  "target_found": true,
+  "memory_set": [
+    "truck319.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 12,
+      "fix_x": 18,
+      "saliencia_media": 0.03235294297337532,
+      "saliencia_mediana": 0.0313725508749485,
+      "saliencia_pixel": 0.027450980618596077,
+      "similitud_media": 0.2137446403503418,
+      "similitud_mediana": 0.1921568661928177,
+      "similitud_pixel": 0.062745101749897,
+      "evidencia_visual": -3.168735980987549,
+      "competencia_fp_var": 2.9978323967213814,
+      "competencia_fp_media": -0.18281090862224578,
+      "competencia_fp_max": 1.549718872251093,
+      "posterior": 6.083686093916185e-05,
+      "entropia_prior_saliencia": 5.012478351593018,
+      "entropia_prior_modelo": 5.611623764038086,
+      "entropia_posterior": 5.611623764038086,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.5886898636817932,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 13,
+      "modelo_fix_x": 12,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.5886898636817932,
+      "competencia_ratio_segundo_mayor": 0.5705063939094543,
+      "competencia_ratio": 0.9691119706756703,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

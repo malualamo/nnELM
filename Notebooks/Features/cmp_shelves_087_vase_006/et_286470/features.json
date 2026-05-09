@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_shelves_087_vase_006.jpg",
+  "sujeto": "et_286470",
+  "target_stim": "vase10.png",
+  "target_found": true,
+  "memory_set": [
+    "vase107.png",
+    "vase10.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 9,
+      "fix_x": 15,
+      "saliencia_media": 0.15023745596408844,
+      "saliencia_mediana": 0.1411764770746231,
+      "saliencia_pixel": 0.13725490868091583,
+      "similitud_media": 0.25039827823638916,
+      "similitud_mediana": 0.23137255012989044,
+      "similitud_pixel": 0.18039216101169586,
+      "evidencia_visual": -1.6077021360397339,
+      "competencia_fp_var": 2.739695646524075,
+      "competencia_fp_media": -0.17281703756452912,
+      "competencia_fp_max": 3.6954063215213226,
+      "posterior": 2.592379678389989e-05,
+      "entropia_prior_saliencia": 5.660371780395508,
+      "entropia_prior_modelo": 5.026699066162109,
+      "entropia_posterior": 5.026699542999268,
+      "ganancia_informacion": null,
+      "eig_optimo": 1.32080078125,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 11,
+      "modelo_fix_x": 18,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 1.32080078125,
+      "competencia_ratio_segundo_mayor": 1.2434407472610474,
+      "competencia_ratio": 0.9414294456157578,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

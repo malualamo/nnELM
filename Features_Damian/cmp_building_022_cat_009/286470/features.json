@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_building_022_cat_009.jpg",
+  "sujeto": "286470",
+  "target_stim": "cat1633.png",
+  "target_found": true,
+  "memory_set": [
+    "cat1633.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 8,
+      "fix_x": 20,
+      "saliencia_media": 0.10122550278902054,
+      "saliencia_mediana": 0.0941176488995552,
+      "saliencia_pixel": 0.06666667014360428,
+      "similitud_media": 0.01829427108168602,
+      "similitud_mediana": 0.01568627543747425,
+      "similitud_pixel": 0.03529411926865578,
+      "evidencia_visual": -3.8523004055023193,
+      "competencia_fp_var": 4.1415981889564835,
+      "competencia_fp_media": -0.21020329246837374,
+      "competencia_fp_max": 3.099614168657363,
+      "posterior": 3.3801610697992146e-05,
+      "entropia_prior_saliencia": 5.223156929016113,
+      "entropia_prior_modelo": 5.61745023727417,
+      "entropia_posterior": 5.61745023727417,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.7209504842758179,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 14,
+      "modelo_fix_x": 22,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.7209504842758179,
+      "competencia_ratio_segundo_mayor": 0.6358442306518555,
+      "competencia_ratio": 0.881952706211925,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

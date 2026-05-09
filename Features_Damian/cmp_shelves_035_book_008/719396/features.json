@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_shelves_035_book_008.jpg",
+  "sujeto": "719396",
+  "target_stim": "book271.png",
+  "target_found": true,
+  "memory_set": [
+    "book271.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 5,
+      "fix_x": 10,
+      "saliencia_media": 0.01936274580657482,
+      "saliencia_mediana": 0.019607843831181526,
+      "saliencia_pixel": 0.0,
+      "similitud_media": 0.02590763010084629,
+      "similitud_mediana": 0.027450980618596077,
+      "similitud_pixel": 0.05098039284348488,
+      "evidencia_visual": -2.726675033569336,
+      "competencia_fp_var": 4.838078376374865,
+      "competencia_fp_media": -0.25276578809418987,
+      "competencia_fp_max": 0.0007946142936014768,
+      "posterior": 8.509370672982186e-05,
+      "entropia_prior_saliencia": 5.540258407592773,
+      "entropia_prior_modelo": 5.918528079986572,
+      "entropia_posterior": 5.9185285568237305,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.47141367197036743,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 12,
+      "modelo_fix_x": 17,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.47141367197036743,
+      "competencia_ratio_segundo_mayor": 0.44990506768226624,
+      "competencia_ratio": 0.9543742458758108,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

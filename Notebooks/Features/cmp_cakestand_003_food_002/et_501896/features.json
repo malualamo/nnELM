@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_cakestand_003_food_002.jpg",
+  "sujeto": "et_501896",
+  "target_stim": "sandwich701.png",
+  "target_found": true,
+  "memory_set": [
+    "sandwich701.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 14,
+      "fix_x": 12,
+      "saliencia_media": 0.20472197234630585,
+      "saliencia_mediana": 0.16862745583057404,
+      "saliencia_pixel": 0.16470588743686676,
+      "similitud_media": 0.10926394909620285,
+      "similitud_mediana": 0.08627451211214066,
+      "similitud_pixel": 0.0784313753247261,
+      "evidencia_visual": -3.983597755432129,
+      "competencia_fp_var": 3.2410220108428747,
+      "competencia_fp_media": -0.18976252317575706,
+      "competencia_fp_max": 1.256006348101989,
+      "posterior": 0.00041353845153935254,
+      "entropia_prior_saliencia": 4.912518501281738,
+      "entropia_prior_modelo": 5.652047157287598,
+      "entropia_posterior": 5.652047157287598,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.3977033197879791,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 12,
+      "modelo_fix_x": 12,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.3977033197879791,
+      "competencia_ratio_segundo_mayor": 0.36977213621139526,
+      "competencia_ratio": 0.9297687945087451,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

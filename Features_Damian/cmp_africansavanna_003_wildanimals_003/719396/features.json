@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_africansavanna_003_wildanimals_003.jpg",
+  "sujeto": "719396",
+  "target_stim": "bird246.png",
+  "target_found": false,
+  "memory_set": [
+    "bird246.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 5,
+      "fix_x": 1,
+      "saliencia_media": 0.04117647185921669,
+      "saliencia_mediana": 0.03529411926865578,
+      "saliencia_pixel": 0.0,
+      "similitud_media": 0.11073453724384308,
+      "similitud_mediana": 0.10196078568696976,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -4.61953592300415,
+      "competencia_fp_var": 4.43472896253501,
+      "competencia_fp_media": -0.21172956683613706,
+      "competencia_fp_max": 0.0037914156691401446,
+      "posterior": 9.246563422493637e-05,
+      "entropia_prior_saliencia": 5.8893842697143555,
+      "entropia_prior_modelo": 6.121145725250244,
+      "entropia_posterior": 6.121145725250244,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.23972360789775848,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 17,
+      "modelo_fix_x": 12,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.23972360789775848,
+      "competencia_ratio_segundo_mayor": 0.23741504549980164,
+      "competencia_ratio": 0.9903698996598556,
+      "competencia_densidad": 2,
+      "competencia_densidad_norm": 0.0026041666666666665
+    }
+  ]
+}

@@ -142,7 +142,7 @@ def rescale_and_crop(trial_info, new_size, receptive_size):
     return trial_scanpath_X, trial_scanpath_Y        
 
 def rescale_coordinate(value, old_size, new_size):
-    return int((value / old_size) * new_size)
+    return int(np.clip((value / old_size) * new_size, 0, new_size - 1))
 
 def between_bounds(target_bbox, fix_y, fix_x, receptive_size):
     return target_bbox[0] <= fix_y + receptive_size[0] // 2 and target_bbox[2] >= fix_y - receptive_size[0] // 2 and \

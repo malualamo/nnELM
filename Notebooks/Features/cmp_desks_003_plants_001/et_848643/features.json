@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_desks_003_plants_001.jpg",
+  "sujeto": "et_848643",
+  "target_stim": "potted plant982.png",
+  "target_found": true,
+  "memory_set": [
+    "potted plant982.png",
+    "potted plant1158.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 10,
+      "fix_x": 15,
+      "saliencia_media": 0.021078431978821754,
+      "saliencia_mediana": 0.019607843831181526,
+      "saliencia_pixel": 0.019607843831181526,
+      "similitud_media": 0.00870864000171423,
+      "similitud_mediana": 0.007843137718737125,
+      "similitud_pixel": 0.007843137718737125,
+      "evidencia_visual": -3.0922417640686035,
+      "competencia_fp_var": 4.303616873611071,
+      "competencia_fp_media": -0.14048871345136185,
+      "competencia_fp_max": 19.739540546386788,
+      "posterior": 3.247236236347817e-06,
+      "entropia_prior_saliencia": 5.381409645080566,
+      "entropia_prior_modelo": 4.400010108947754,
+      "entropia_posterior": 4.400010108947754,
+      "ganancia_informacion": null,
+      "eig_optimo": 1.7816745042800903,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 8,
+      "modelo_fix_x": 16,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 1.7816745042800903,
+      "competencia_ratio_segundo_mayor": 1.4223772287368774,
+      "competencia_ratio": 0.7983373087058953,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_mountain_019_sheep_007.jpg",
+  "sujeto": "S119",
+  "target_stim": "sheep119.png",
+  "target_found": true,
+  "memory_set": [
+    "sheep119.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 20,
+      "fix_x": 6,
+      "saliencia_media": 0.006617647595703602,
+      "saliencia_mediana": 0.007843137718737125,
+      "saliencia_pixel": 0.0,
+      "similitud_media": 0.0034543508663773537,
+      "similitud_mediana": 0.003921568859368563,
+      "similitud_pixel": 0.007843137718737125,
+      "evidencia_visual": -3.763950824737549,
+      "competencia_fp_var": 6.0986361568587775,
+      "competencia_fp_media": -0.17277645503132835,
+      "competencia_fp_max": 19.572649423983236,
+      "posterior": 1.8993920321008773e-06,
+      "entropia_prior_saliencia": 5.891974449157715,
+      "entropia_prior_modelo": 6.130796432495117,
+      "entropia_posterior": 6.130796909332275,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.29836684465408325,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 13,
+      "modelo_fix_x": 14,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.29836684465408325,
+      "competencia_ratio_segundo_mayor": 0.27762913703918457,
+      "competencia_ratio": 0.9304959381832747,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

@@ -23,6 +23,7 @@ Uso:
 """
 
 import argparse
+import copy
 import numpy as np
 from os import path, makedirs, listdir
 
@@ -33,9 +34,16 @@ import Metrics.main  # noqa: F401
 from Model.scripts import loader
 from Model.scripts import constants as model_constants
 from Model.visualsearch import visual_searcher as vs
+from Model.visualsearch.utils.utils import rescale_coordinate, collapse_fixations
 
 
 MAPS_OUTPUT_DIR = 'Human_Maps'
+
+
+class _NeverEndCondition:
+    """target_present_condition que nunca corta el trial — permite capturar TODAS las fijaciones."""
+    def end_trial(self, *args, **kwargs):
+        return False
 
 
 class HumanMapExtractor(vs.VisualSearcherSubject):
@@ -50,15 +58,35 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
     _capture_fixation_maps = True  # Activa el hook en VisualSearcher.search()
 
     def __init__(self, config, dataset_info, trials_properties, output_path,
-                 human_scanpaths, sigma, filters_mss, subject_id):
+                 human_scanpaths, sigma, filters_mss, subject_id, maps_output_dir=None):
+        # CAMBIO PARA NO TERMINAR AL ENCONTRAR EL TARGET:
+        # super().__init__() llama rescale_scanpaths() que aplica crop_scanpath() in-place,
+        # truncando el scanpath en la primera fijación dentro del target_bbox.
+        # Guardamos copia antes para restaurar después con rescale sin crop.
+        human_scanpaths_full = copy.deepcopy(human_scanpaths)
+
         super().__init__(
             config, dataset_info, trials_properties, output_path,
             human_scanpaths, sigma, filters_mss,
             follow_human_scanpath=True
         )
         self.subject_id = subject_id
-        self.maps_dir = path.join(MAPS_OUTPUT_DIR, dataset_info['dataset_name'], subject_id)
+        base_dir = maps_output_dir if maps_output_dir is not None else MAPS_OUTPUT_DIR
+        self.maps_dir = path.join(base_dir, dataset_info['dataset_name'], subject_id)
         self._maps_buffer = {}  # {image_name: {visual_evidence:[], posterior:[], ...}}
+
+        # Reemplazar human_scanpaths con versión rescalada SIN crop
+        grid_rows, grid_cols = self.grid.size()
+        for sp in human_scanpaths_full.values():
+            X = [rescale_coordinate(x, sp['image_width'],  grid_cols) for x in sp['X']]
+            Y = [rescale_coordinate(y, sp['image_height'], grid_rows) for y in sp['Y']]
+            # X, Y = collapse_fixations(X, Y, [1, 1])  # desactivado: queremos TODAS las fijaciones
+            sp['X'] = [int(x) for x in X]
+            sp['Y'] = [int(y) for y in Y]
+        self.human_scanpaths = human_scanpaths_full
+
+        # Deshabilitar target_present_condition para no cortar el loop al encontrar el target
+        self.target_present_condition = _NeverEndCondition()
 
     def plot_heatmap(self):
         # Desactiva el guardado de posteriors en CSV — usamos .npz en su lugar
@@ -130,11 +158,17 @@ class HumanMapExtractor(vs.VisualSearcherSubject):
         self._maps_buffer = {}
 
 
-def run_subject(dataset_name, config_name, subject_id, filters_mss):
+def run_subject(dataset_name, config_name, subject_id, filters_mss,
+                scanpaths_dir=None, maps_output_dir=None):
     dataset_path = path.join(model_constants.DATASETS_PATH, dataset_name)
     trials_file = path.join(dataset_path, 'trials_properties.json')
 
     dataset_info = loader.load_dataset_info(dataset_path)
+
+    # Permite sobreescribir el directorio de scanpaths del dataset
+    if scanpaths_dir is not None:
+        dataset_info['scanpaths_dir'] = scanpaths_dir
+
     human_scanpaths = loader.load_human_scanpaths(dataset_info['scanpaths_dir'], subject_id)
 
     if not human_scanpaths:
@@ -159,31 +193,35 @@ def run_subject(dataset_name, config_name, subject_id, filters_mss):
 
     extractor = HumanMapExtractor(
         config, dataset_info, trials_properties, output_path,
-        human_scanpaths, model_constants.SIGMA, filters_mss, subject_id
+        human_scanpaths, model_constants.SIGMA, filters_mss, subject_id,
+        maps_output_dir=maps_output_dir
     )
     extractor.run()
 
 
-def main(dataset_name, config_name, subject_id=None, filters_mss=[]):
+def main(dataset_name, config_name, subject_id=None, filters_mss=[],
+         scanpaths_dir=None, maps_output_dir=None):
     dataset_path = path.join(model_constants.DATASETS_PATH, dataset_name)
     dataset_info = loader.load_dataset_info(dataset_path)
-    scanpaths_dir = dataset_info['scanpaths_dir']
+    sp_dir = scanpaths_dir if scanpaths_dir is not None else dataset_info['scanpaths_dir']
 
     if subject_id is not None:
         subjects = [subject_id]
     else:
         subjects = sorted([
             f.replace('_scanpaths.json', '')
-            for f in listdir(scanpaths_dir)
+            for f in listdir(sp_dir)
             if f.endswith('_scanpaths.json')
         ])
 
+    out_dir = maps_output_dir if maps_output_dir is not None else MAPS_OUTPUT_DIR
     print(f'Dataset: {dataset_name} | Config: {config_name} | Sujetos: {len(subjects)}')
     for i, subj in enumerate(subjects, 1):
         print(f'\n[{i}/{len(subjects)}] Sujeto: {subj}')
-        run_subject(dataset_name, config_name, subj, filters_mss)
+        run_subject(dataset_name, config_name, subj, filters_mss,
+                    scanpaths_dir=scanpaths_dir, maps_output_dir=maps_output_dir)
 
-    print(f'\nMapas guardados en: {MAPS_OUTPUT_DIR}/{dataset_name}/')
+    print(f'\nMapas guardados en: {out_dir}/')
 
 
 if __name__ == '__main__':
@@ -196,5 +234,10 @@ if __name__ == '__main__':
                         help='Nombre de la config (ej: elm_final)')
     parser.add_argument('--s', '--subject', type=str, default=None,
                         help='ID del sujeto (ej: et_117969). Sin valor = todos los sujetos.')
+    parser.add_argument('--scanpaths_dir', type=str, default=None,
+                        help='Directorio de scanpaths JSON. Por defecto usa el del dataset_info.json.')
+    parser.add_argument('--maps_dir', type=str, default=None,
+                        help='Directorio raíz de salida para los mapas .npz. Por defecto: Human_Maps/')
     args = parser.parse_args()
-    main(args.d, args.cfg, args.s)
+    main(args.d, args.cfg, args.s,
+         scanpaths_dir=args.scanpaths_dir, maps_output_dir=args.maps_dir)

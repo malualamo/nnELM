@@ -1,0 +1,46 @@
+{
+  "imagen": "cmp_yard_007_motorcycle_001.jpg",
+  "sujeto": "S101",
+  "target_stim": "motorcycle807.png",
+  "target_found": true,
+  "memory_set": [
+    "motorcycle793.png",
+    "motorcycle779.png",
+    "motorcycle707.png",
+    "motorcycle807.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 12,
+      "fix_x": 16,
+      "saliencia_media": 0.007843137718737125,
+      "saliencia_mediana": 0.007843137718737125,
+      "saliencia_pixel": 0.007843137718737125,
+      "similitud_media": 0.025344669818878174,
+      "similitud_mediana": 0.027450980618596077,
+      "similitud_pixel": 0.0235294122248888,
+      "evidencia_visual": -3.824713706970215,
+      "competencia_fp_var": 5.752224718585961,
+      "competencia_fp_media": -0.26639831494837235,
+      "competencia_fp_max": 0.22075768432479378,
+      "posterior": 5.4255127906799316e-05,
+      "entropia_prior_saliencia": 4.935225486755371,
+      "entropia_prior_modelo": 5.423885345458984,
+      "entropia_posterior": 5.423885345458984,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.5909267067909241,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 10,
+      "modelo_fix_x": 19,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.5909267067909241,
+      "competencia_ratio_segundo_mayor": 0.5169592499732971,
+      "competencia_ratio": 0.8748280354101555,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}

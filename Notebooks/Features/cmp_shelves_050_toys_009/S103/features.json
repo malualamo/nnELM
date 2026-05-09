@@ -1,0 +1,46 @@
+{
+  "imagen": "cmp_shelves_050_toys_009.jpg",
+  "sujeto": "S103",
+  "target_stim": "motorcycle306.png",
+  "target_found": true,
+  "memory_set": [
+    "airplane363.png",
+    "bus35.png",
+    "motorcycle306.png",
+    "airplane375.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 10,
+      "fix_x": 20,
+      "saliencia_media": 0.026960784569382668,
+      "saliencia_mediana": 0.027450980618596077,
+      "saliencia_pixel": 0.027450980618596077,
+      "similitud_media": 0.0017003677785396576,
+      "similitud_mediana": 0.0,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -4.1444993019104,
+      "competencia_fp_var": 6.455895420783823,
+      "competencia_fp_media": -0.27177604343757944,
+      "competencia_fp_max": 0.5105724961953231,
+      "posterior": 3.1539159408566775e-06,
+      "entropia_prior_saliencia": 4.956124782562256,
+      "entropia_prior_modelo": 5.386885643005371,
+      "entropia_posterior": 5.386885643005371,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.49791035056114197,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 12,
+      "modelo_fix_x": 15,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.49791035056114197,
+      "competencia_ratio_segundo_mayor": 0.49488160014152527,
+      "competencia_ratio": 0.9939170768066916,
+      "competencia_densidad": 5,
+      "competencia_densidad_norm": 0.006510416666666667
+    }
+  ]
+}

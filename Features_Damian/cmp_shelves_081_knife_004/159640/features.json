@@ -1,0 +1,43 @@
+{
+  "imagen": "cmp_shelves_081_knife_004.jpg",
+  "sujeto": "159640",
+  "target_stim": "knife77.png",
+  "target_found": true,
+  "memory_set": [
+    "knife77.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 8,
+      "fix_x": 6,
+      "saliencia_media": 0.17426472902297974,
+      "saliencia_mediana": 0.16470588743686676,
+      "saliencia_pixel": 0.003921568859368563,
+      "similitud_media": 0.02669653855264187,
+      "similitud_mediana": 0.0235294122248888,
+      "similitud_pixel": 0.0,
+      "evidencia_visual": -3.503685235977173,
+      "competencia_fp_var": 5.106457938515999,
+      "competencia_fp_media": -0.24952610978339804,
+      "competencia_fp_max": 0.15110567137333625,
+      "posterior": 1.896427602332551e-05,
+      "entropia_prior_saliencia": 5.988581657409668,
+      "entropia_prior_modelo": 6.195075035095215,
+      "entropia_posterior": 6.195074558258057,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.24895088374614716,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 9,
+      "modelo_fix_x": 15,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.24895088374614716,
+      "competencia_ratio_segundo_mayor": 0.24181662499904633,
+      "competencia_ratio": 0.9713427056785403,
+      "competencia_densidad": 3,
+      "competencia_densidad_norm": 0.00390625
+    }
+  ]
+}

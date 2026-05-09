@@ -1,0 +1,44 @@
+{
+  "imagen": "cmp_yard_003_animal_002.jpg",
+  "sujeto": "419760",
+  "target_stim": "sheep864.png",
+  "target_found": true,
+  "memory_set": [
+    "dog2067.png",
+    "sheep864.png"
+  ],
+  "fijaciones": [
+    {
+      "fixation": 0,
+      "fix_y": 11,
+      "fix_x": 15,
+      "saliencia_media": 0.22205501794815063,
+      "saliencia_mediana": 0.17058824002742767,
+      "saliencia_pixel": 0.003921568859368563,
+      "similitud_media": 0.1778760850429535,
+      "similitud_mediana": 0.1725490242242813,
+      "similitud_pixel": 0.003921568859368563,
+      "evidencia_visual": -3.099649667739868,
+      "competencia_fp_var": 2.552625656767828,
+      "competencia_fp_media": -0.15484663035917226,
+      "competencia_fp_max": 6.917618907323549,
+      "posterior": 0.0002983220329042524,
+      "entropia_prior_saliencia": 4.432586669921875,
+      "entropia_prior_modelo": 5.485598564147949,
+      "entropia_posterior": 5.485598564147949,
+      "ganancia_informacion": null,
+      "eig_optimo": 0.6095444560050964,
+      "eig_en_fijacion": null,
+      "gap_entropia": null,
+      "modelo_fix_y": 13,
+      "modelo_fix_x": 21,
+      "distancia_grilla": null,
+      "distancia_pixels": null,
+      "competencia_ratio_mayor": 0.6095444560050964,
+      "competencia_ratio_segundo_mayor": 0.5715072154998779,
+      "competencia_ratio": 0.9375972660722544,
+      "competencia_densidad": 1,
+      "competencia_densidad_norm": 0.0013020833333333333
+    }
+  ]
+}
