@@ -8,8 +8,13 @@ __pycache__/
 /backup
 prompt.txt
 /Notebooks/Results/
-.pdf
-.png
+*.pdf
+*.png
 .claude
-.json
-.npz
+*.json
+*.npz
+
+# Datos pesados (outputs de features / EEG crudo) — no van al repo
+/Features_Damian/
+/Notebooks/Features/
+/hybrid_metadata/
